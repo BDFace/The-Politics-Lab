@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Women got the board seats. They still don’t get the top job · The Coffeehouse Lab</title>
+<meta name="description" content="In 2011 France and Italy passed laws to put women on company boards. Britain set voluntary targets instead. Both routes put more women on boards. Neither put many women in charge of the companies.">
+<meta property="og:site_name" content="The Coffeehouse Lab">
+<meta property="og:title" content="Women got the board seats. They still don’t get the top job">
+<meta property="og:description" content="Quota laws filled board seats. Top management barely changed: 25.3% women in quota countries against 23.1% elsewhere.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="/stories/women-on-boards/img/wob-p1-boardroom-2000.jpg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* The Coffeehouse Lab: story page. Same scroll mechanism as The Replay Lab stories:
+   each photo scene pins a full-screen photo (position: sticky, 100svh) and the text beats scroll up over it,
+   then the photo scrolls away with the scene. Prose and charts sit in a 660px reading column between scenes.
+   Signature: the thin plum margin bar (beside the wordmark, the text cards and the key number). Single light look. */
+:root {
+  --paper: #FFFFFF; --ink: #1F1F1F; --body: #2B2A2C; --sub: #6B6B6B; --grid: #E6E6E6; --ctx: #BDBDBD;
+  --plum: #6B2D5C; --tint: #F5F3F5; --night: #0B0B0B; --white: #FFFFFF;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --col: 660px; --bar-h: 54px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 19px; line-height: 1.65; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--plum); outline-offset: 2px; }
+.skip { position: absolute; left: 16px; top: -60px; z-index: 50; background: var(--ink); color: var(--white); padding: 8px 12px; font-family: var(--sans); font-weight: 700; }
+.skip:focus { top: 16px; }
+.label { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--plum); }
+
+/* Reading bar: wordmark, the chapter you are in, and a plum progress line */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 31; background: var(--paper); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); border-bottom: 1px solid var(--grid); font-family: var(--sans); }
+.bar .row { display: flex; justify-content: space-between; align-items: center; gap: var(--s4); padding-block: 9px 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mark { display: flex; align-items: stretch; gap: 8px; text-decoration: none; }
+.mark img { display: block; height: 22px; width: auto; }
+.mark span { display: flex; flex-direction: column; font-family: var(--serif); font-weight: 700; font-size: 15px; line-height: 1.05; letter-spacing: -.01em; }
+.bar .track { height: 2px; background: transparent; }
+.bar .fill { height: 2px; width: 0; background: var(--plum); }
+.note { font-family: var(--sans); font-size: 13px; color: var(--sub); background: var(--tint); padding-block: 6px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* ---------------- Photo scenes ---------------- */
+.photo-scene { position: relative; background: var(--night); color: var(--white); }
+.photo-scene .bg { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.photo-scene .bg img { width: 100%; height: 100%; object-fit: cover; }
+.photo-scene .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.62) 100%); }
+.photo-scene .bg + .beat { margin-top: -100vh; margin-top: -100svh; }
+.photo-scene .beat { position: relative; z-index: 1; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; padding-top: calc(var(--bar-h) + var(--s7)); padding-bottom: clamp(48px, 10vh, 96px); padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+.photo-scene .beat.short { min-height: 70vh; min-height: 70svh; }
+.photo-scene .credit { position: absolute; right: 16px; bottom: 12px; z-index: 2; margin: 0; font-family: var(--sans); font-size: 11px; line-height: 1.4; color: rgba(255,255,255,.85); max-width: calc(100% - 32px); text-align: right; }
+.photo-scene .card-text { display: flex; gap: 0; background: var(--paper); color: var(--ink); max-width: 58ch; font-size: 19px; line-height: 1.6; }
+.photo-scene .card-text::before { content: ""; flex: 0 0 6px; background: var(--plum); }
+.photo-scene .card-text > div { padding: var(--s5); min-width: 0; }
+.photo-scene .card-text p { margin: 0; }
+.photo-scene .card-text p + p { margin-top: 1em; }
+.photo-scene .big { font-family: var(--serif); font-size: clamp(40px, 6.4vw, 92px); font-weight: 700; line-height: 1; letter-spacing: -.02em; max-width: 14ch; text-wrap: balance; margin: 16px 0 0; text-shadow: 0 2px 24px rgba(0,0,0,.45); }
+.photo-scene .label { color: var(--white); }
+.photo-scene .label.tag { display: inline-block; box-shadow: inset 0 -2px 0 var(--white); padding-bottom: 3px; }
+
+.story-head .kick { display: flex; gap: var(--s3); align-items: baseline; margin-bottom: var(--s4); flex-wrap: wrap; color: rgba(255,255,255,.88); }
+.story-head .kick .tag { color: var(--white); background: var(--plum); padding: 3px 8px; box-shadow: none; }
+.story-head h1 { margin: 0; font-family: var(--serif); font-size: clamp(40px, 6.2vw, 96px); line-height: .98; font-weight: 800; letter-spacing: -.025em; text-wrap: balance; max-width: 16ch; text-shadow: 0 2px 30px rgba(0,0,0,.45); }
+.story-head .standfirst { font-size: clamp(19px, 2vw, 24px); line-height: 1.45; max-width: 44ch; margin: var(--s5) 0 0; text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+.story-head .cue { margin-top: var(--s6); display: inline-flex; align-items: center; gap: var(--s2); color: rgba(255,255,255,.88); }
+.story-head .cue::after { content: ""; width: 1px; height: 28px; background: currentColor; animation: cue 2.4s var(--ease) infinite; transform-origin: top; }
+@keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+/* ---------------- Reading column ---------------- */
+.prose { padding-block: var(--s8); padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); color: var(--body); }
+.prose > * { max-width: var(--col); margin-left: auto; margin-right: auto; }
+.prose p { margin-top: 0; margin-bottom: 1.1em; }
+.prose > .wide { max-width: 760px; }
+.chapter-head { padding-top: var(--s9); padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+.chapter-head > * { max-width: var(--col); margin-left: auto; margin-right: auto; }
+.chapter-head .label { display: block; margin-bottom: var(--s3); border-top: 1px solid var(--ink); padding-top: var(--s3); }
+.chapter-head h2 { margin: 0 auto; font-family: var(--serif); font-size: clamp(34px, 4.6vw, 56px); line-height: 1.04; font-weight: 700; letter-spacing: -.018em; text-wrap: balance; }
+.chapter-head + .prose { padding-top: var(--s6); }
+
+/* Figures */
+.figure { margin: var(--s7) auto; }
+.figure img { width: 100%; height: auto; }
+.figure figcaption { font-family: var(--sans); font-size: 12px; color: var(--sub); margin-top: var(--s3); line-height: 1.45; }
+
+/* The number to take away */
+.take { display: flex; gap: var(--s4); margin: var(--s6) auto var(--s7); font-family: var(--sans); color: var(--ink); }
+.take i { flex: 0 0 6px; background: var(--plum); }
+.take div { display: grid; gap: 6px; }
+.take .lbl { margin: 0; font-size: 14px; font-weight: 600; }
+.take .num { margin: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(56px, 9vw, 84px); line-height: 1; color: var(--plum); font-variant-numeric: tabular-nums lining-nums; letter-spacing: -.02em; }
+.take .what { margin: 0; font-size: 17px; line-height: 1.45; }
+.take .src { margin: 0; font-size: 13px; color: var(--sub); }
+.terms { margin: var(--s6) auto; padding: 18px 20px; border-top: 3px solid var(--plum); background: #F6F1F4; font-family: var(--sans); color: var(--ink); }
+.terms .lbl { margin: 0 0 10px; font-size: 14px; font-weight: 600; }
+.terms dl { margin: 0; display: grid; gap: 10px; }
+.terms dt { font-weight: 700; font-size: 17px; }
+.terms dd { margin: 2px 0 0; font-size: 16px; line-height: 1.45; }
+
+/* What this means */
+.means { display: flex; gap: 18px; margin-top: var(--s7) !important; }
+.means > i { flex: 0 0 6px; background: var(--plum); }
+.means > div { min-width: 0; }
+.means h2 { margin: 6px 0 var(--s4); font-size: clamp(28px, 3.4vw, 36px); line-height: 1.1; color: var(--ink); }
+.means ul { margin: 0; padding-left: 1.1em; display: grid; gap: 14px; }
+.means li { font-size: 18px; line-height: 1.55; }
+.means li b { font-family: var(--sans); font-weight: 600; color: var(--ink); }
+
+/* Back matter */
+.back { border-top: 1px solid var(--grid); padding-top: var(--s5); display: grid; gap: var(--s5); font-family: var(--sans); }
+.back h3 { margin: 0 0 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.back p, .back li { margin: 0; font-size: 15px; line-height: 1.55; }
+.back ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--s5); }
+.card { display: flex; gap: 12px; text-decoration: none; }
+.card i { flex: 0 0 3px; background: var(--ctx); }
+.card span { display: grid; gap: 4px; }
+.card small { font-size: 13px; color: var(--sub); }
+.card strong { font-family: var(--serif); font-weight: 600; font-size: 20px; line-height: 1.25; color: var(--ink); }
+.card:hover strong { color: var(--plum); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; border-top: 1px solid var(--grid); font-family: var(--sans); font-size: 13px; color: var(--sub); padding-block: 16px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+@media (max-width: 760px) {
+  body { font-size: 18px; }
+  .photo-scene .card-text { font-size: 18px; }
+  .photo-scene .card-text > div { padding: var(--s4); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0s !important; animation: none !important; scroll-behavior: auto !important; }
+}
+.footnav a { text-decoration: none; } .footnav a:hover { color: var(--plum); }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#start">Skip to the story</a>
+
+<div class="bar" role="navigation" aria-label="Story progress">
+  <div class="row">
+    <a class="mark" href="/"><img src="/images/brand/coffeehouse-lab-logo-plain-light.svg" alt="The Coffeehouse Lab front page"></a>
+  </div>
+  <div class="track" aria-hidden="true"><div class="fill"></div></div>
+</div>
+
+<main id="top">
+<article>
+
+<!-- ============ P1: the boardroom ============ -->
+<section class="photo-scene story-head" id="boardroom" data-chapter="2011">
+  <div class="bg">
+    <img src="img/wob-p1-boardroom-2000.jpg" srcset="img/wob-p1-boardroom-900.jpg 900w, img/wob-p1-boardroom-2000.jpg 2000w" sizes="100vw" alt="An empty meeting room seen through a glass wall: a long white table with twelve white chairs around it">
+    <p class="credit">Photo: Pawel Chu on Unsplash</p>
+  </div>
+  <div class="beat">
+    <div>
+      <div class="kick label"><span class="tag">Story 01</span><span>Women in power · UK and Europe · 9 min read</span></div>
+      <h1>Women got the board seats. They still don’t get the top job</h1>
+      <p class="standfirst">In 2011 France and Italy passed laws to put women on company boards. Britain set voluntary targets instead. Both routes put more women on boards. Neither put many women in charge of the companies.</p>
+      <span class="cue label" aria-hidden="true">Scroll</span>
+    </div>
+  </div>
+  <div class="beat" id="start">
+    <div class="card-text"><div><p>In 2011 three of Europe’s biggest economies decided, within six months of each other, that too few women sat on the boards of their largest companies. They chose different ways to fix it.</p></div></div>
+  </div>
+</section>
+
+<section class="prose">
+  <p>In January, France passed the Copé-Zimmermann law: boards of large listed companies had to be 40% women by 2017. Appointments that broke the rule would be void, and directors’ fees suspended. In July, Italy passed the Golfo-Mosca law, requiring one-third women, with fines and, in the end, the removal of boards that did not comply.</p>
+  <p>In February, Lord Davies reported to the UK government. Women held 12.5% of all seats on FTSE 100 boards, up from 9.4% in 2004. He recommended a target of 25% by 2015, but argued that no law was needed. Business would be asked, not told.</p>
+  <p>It was close to a natural experiment: the same problem, the same year, but two very different approaches.</p>
+</section>
+
+<!-- ============ Chapter 2: the question ============ -->
+<header class="chapter-head" id="question" data-chapter="The question">
+  <span class="label">Chapter 2</span>
+  <h2>Did board seats lead to management jobs?</h2>
+</header>
+<section class="prose">
+  <p>The case for quotas was never only about the board. It was that women on boards would pull other women up: into the management team, the finance director’s office, and eventually the chief executive’s job.</p>
+  <p>So the question becomes: did putting women on boards get women into the jobs that run the company? And did it matter whether a law did it or a target?</p>
+  <aside class="terms" aria-label="Three kinds of job in this story">
+    <p class="lbl">Three kinds of job in this story</p>
+    <dl>
+      <div><dt>Board seats</dt><dd>The seats held by people who oversee the company but don’t run it day to day (non-executive directors). Quota laws mostly fill these.</dd></div>
+      <div><dt>Top management</dt><dd>The senior managers who run the company day to day, on the board or in the management team below it.</dd></div>
+      <div><dt>Chief executive</dt><dd>The boss: the one person in charge of running the company.</dd></div>
+    </dl>
+  </aside>
+  <p>The European Institute for Gender Equality (EIGE) counts the women and men in each of these jobs in the largest listed companies of every European country, twice a year, using the same definitions everywhere. The UK stays in the figures until the end of 2024, after Brexit, so it can be compared like for like at least until then.</p>
+  <figure class="figure wide chart">
+    <picture>
+      <source media="(max-width: 560px)" srcset="img/c1-boardroom-vs-exec-phone.png">
+      <img src="img/c1-boardroom-vs-exec-desktop.png" alt="Two line charts, 2012 to 2024. Board seats: quota countries rise from 19.7% to 43.8%, the UK from 22.9% to 49.7%, the rest of Europe from 16.6% to 32.6%. Top management: quota countries rise from 8.4% to 25.3%, the rest of Europe from 12.1% to 23.1%, the UK from 11.0% to 34.5%." loading="lazy">
+    </picture>
+  </figure>
+</section>
+
+<!-- ============ Chapter 3: the answer ============ -->
+<header class="chapter-head" id="answer" data-chapter="The answer">
+  <span class="label">Chapter 3</span>
+  <h2>Boards changed. Management barely did</h2>
+</header>
+<section class="prose">
+  <p>In the eight European countries with binding quota laws, women held 25.3% of top management jobs at the end of 2024. In the rest of Europe, with no quota, they held 23.1%. Thirteen years of law, and a gap of two points.</p>
+  <div class="take">
+    <i aria-hidden="true"></i>
+    <div>
+      <p class="lbl">The number to take away</p>
+      <p class="num">2 points</p>
+      <p class="what">The difference in women’s share of top management jobs between countries with quota laws (25.3%) and countries without (23.1%), end of 2024.</p>
+      <p class="src">Source: EIGE Gender Statistics Database, largest listed companies. Recomputed from the raw headcounts.</p>
+    </div>
+  </div>
+  <p>Board seats tell a different story. In the quota countries women held 43.8% of board seats, against 32.6% elsewhere. Part of that gap is geography: in western and northern Europe, where no quota applies, women hold 41.1% of board seats, close to the quota countries’ figure. The laws did exactly what they said: they filled the seats they named.</p>
+  <p>And among chief executives the gap disappears. Women ran 19 of the 211 largest companies in the quota countries (9.0%) and 38 of the 398 elsewhere (9.5%).</p>
+  <p>To be fair to the data, quota countries did start further behind. Their share of women in top management rose by 17 points from 2012, against 11 points elsewhere, so some, albeit limited, catching up happened. But inside the quota countries the gap between women’s share of board seats and their share of top management widened, from 11 points in 2012 to 18 points in 2024.</p>
+</section>
+
+<!-- ============ P2: Italy ============ -->
+<section class="photo-scene" id="italy" data-chapter="Italy">
+  <div class="bg">
+    <img src="img/wob-p2-market-screen-2000.jpg" srcset="img/wob-p2-market-screen-900.jpg 900w, img/wob-p2-market-screen-2000.jpg 2000w" sizes="100vw" loading="lazy" alt="A trading screen showing world bond markets, its menus and country names in Italian">
+    <p class="credit">Photo: Daniel on Unsplash</p>
+  </div>
+  <div class="beat short"><div><span class="label tag">The starkest case</span><p class="big">Italy</p></div></div>
+  <div class="beat"><div class="card-text"><div><p>Women hold half of the board seats in Italy’s largest companies (50.0%). They hold 17.0% of top management jobs, and run one of the 35 companies.</p></div></div></div>
+</section>
+
+<section class="prose">
+  <figure class="figure wide chart">
+    <picture>
+      <source media="(max-width: 560px)" srcset="img/c2-dumbbell-phone.png">
+      <img src="img/c2-dumbbell-desktop.png" alt="Dot chart of 30 countries, end of 2024, each with women’s share of top management jobs and of board seats. The gap is widest in Italy (17.0% against 50.0%) and Portugal. In 25 of the 30 countries the share of board seats is higher. Quota countries are marked in purple." loading="lazy">
+    </picture>
+  </figure>
+</section>
+
+<!-- ============ P3: Britain ============ -->
+<section class="photo-scene" id="britain" data-chapter="Britain">
+  <div class="bg">
+    <img src="img/wob-p3-city-2000.jpg" srcset="img/wob-p3-city-900.jpg 900w, img/wob-p3-city-2000.jpg 2000w" sizes="100vw" loading="lazy" alt="The towers of the City of London under a grey sky, including the Gherkin and the Leadenhall Building">
+    <p class="credit">The City of London. Photo: Robert Bye on Unsplash</p>
+  </div>
+  <div class="beat short"><div><span class="label tag">Chapter 4 · The exception</span><p class="big">Britain, with no law</p></div></div>
+  <div class="beat"><div class="card-text"><div><p>The country that refused a quota ended up with the highest share of women in top management in Europe. At the end of 2024 women held 34.5% of top management jobs in the UK’s largest listed companies, more than in any of the 30 European countries EIGE covers.</p><p>In 2012 it was 11.0%. No country’s share rose further.</p></div></div></div>
+</section>
+
+<section class="prose">
+  <p>Britain also matched the quota countries on board seats: women held 49.7%, about the same as France (49.9%) and Italy (50.0%).</p>
+  <p>One difference stands out. From 2016, the UK’s voluntary targets went beyond the board. The Hampton-Alexander Review asked FTSE 100 firms for 33% women in their top management teams, and among the managers reporting to them, by 2020. The FTSE Women Leaders Review raised that to 40% of senior leadership by 2025, and asked every FTSE 350 company for at least one woman in one of four key roles: chair, senior independent director, chief executive or finance director. Quota laws, by contrast, named only the board.</p>
+  <figure class="figure wide chart">
+    <picture>
+      <source media="(max-width: 560px)" srcset="img/c3-uk-slope-phone.png">
+      <img src="img/c3-uk-slope-desktop.png" alt="Slope chart of women’s share of top management jobs in 30 countries, 2012 and 2024. The UK, highlighted, rises from 11.0% to 34.5%, the highest in 2024. Italy reaches 17.0%." loading="lazy">
+    </picture>
+  </figure>
+  <p>The British record is not clean, however. A UK board also has a few seats for the company’s own senior managers, such as the chief executive and the finance director. Women hold just 15.4% of those seats in the FTSE 350, against 49.5% of the other board seats, and 8% of chief executive jobs (FTSE Women Leaders Review, February 2026). Britain’s women managers are mostly in the management team below the board, not yet in the few management seats on it.</p>
+</section>
+
+<!-- ============ Chapter 5: the consequence ============ -->
+<header class="chapter-head" id="consequence" data-chapter="The consequence">
+  <span class="label">Chapter 5</span>
+  <h2>160 missing women chief executives</h2>
+</header>
+<section class="prose">
+  <p>At the end of 2024, 49 of the EU’s 563 largest listed companies were run by a woman. If women ran companies in the same proportion as they hold board seats (37.2%), the number would be about 209. That is 160 companies, in the EU’s own main stock market indices, where women have reached the board but not the chief executive’s job.</p>
+  <figure class="figure wide chart">
+    <picture>
+      <source media="(max-width: 560px)" srcset="img/c4-eu-ceos-phone.png">
+      <img src="img/c4-eu-ceos-desktop.png" alt="563 squares, one per company. 49 are filled in purple for companies run by a woman, 160 are outlined for the extra companies if chief executives matched women’s 37.2% share of board seats, and the rest are grey." loading="lazy">
+    </picture>
+  </figure>
+  <p>In the UK the same sum gives 7 women chief executives among 48 companies, against 24 if chief executives matched women’s share of board seats.</p>
+  <p>The EU has now taken the quota route Union-wide. Its 2022 directive required listed companies to reach 40% women in board seats, or 33% across the whole board, by June 2026. It names the board again, not top management.</p>
+
+  <section class="means" id="means" data-chapter="What this means" aria-labelledby="means-h">
+    <i aria-hidden="true"></i>
+    <div>
+      <span class="label">For policy</span>
+      <h2 id="means-h">What this means</h2>
+      <ul>
+        <li><b>A quota buys the seats it names, and little beyond them.</b> Laws aimed at boards filled board seats. Top management in quota countries now looks much like top management in countries without a law. Policy aimed at who runs companies has to name those jobs.</li>
+        <li><b>Targets that reach below the board are the thing to watch.</b> The UK set voluntary goals for top management teams and the managers reporting to them, and its share of women in top management rose more than anywhere else in Europe. That is a link, not proof: UK firms differ in other ways, and Ireland, also without a quota, rose fast too.</li>
+        <li><b>The next test is already running.</b> The EU directive repeats the board-only design across 27 countries. If this pattern holds, it will put more women on boards in the countries that lag, and leave women running fewer than one company in ten.</li>
+        <li><b>What the data can’t tell us.</b> Whether quotas caused anything, or whether the countries that adopted them were different to begin with. EIGE covers about 50 companies per country at most, so a single new chief executive can swing the percentages. The UK leaves the figures after 2024.</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+<section class="prose" id="sources">
+  <div class="back">
+    <div>
+      <h3>Sources</h3>
+      <ul>
+        <li>European Institute for Gender Equality, Gender Statistics Database: largest listed companies (wmid_comp).</li>
+        <li>FTSE Women Leaders Review, February 2026 report.</li>
+        <li>Hampton-Alexander Review, reports 2016 to 2021.</li>
+        <li>Lord Davies, Women on Boards, February 2011.</li>
+        <li>Directive (EU) 2022/2381 on gender balance among directors of listed companies.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Photos</h3>
+      <ul>
+        <li>Empty meeting room: Pawel Chu on Unsplash.</li>
+        <li>Market screen in Italian: Daniel on Unsplash.</li>
+        <li>City of London: Robert Bye on Unsplash.</li>
+      </ul>
+      <p style="margin-top: 6px">Charts made for The Coffeehouse Lab.</p>
+    </div>
+    <div class="cards" id="data">
+      <a class="card" href="data.html"><i aria-hidden="true"></i><span><small>The data</small><strong>Download the board figures and see how we checked them</strong></span></a>
+    </div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="foot"><span>The Coffeehouse Lab · Politics, policy and the data</span><span>Independent and self-funded. Photos and sources credited above.</span><nav aria-label="Footer" class="footnav"><a href="/">Front page</a> · <a href="/#stories">The stories</a> · <a href="/data/">The data</a> · <a href="/corrections/">Corrections</a></nav></footer>
+
+<script>
+/* Reading bar: a plum progress line */
+(function () {
+  var fill = document.querySelector('.bar .fill');
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var doc = document.documentElement, max = doc.scrollHeight - innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    if (fill) fill.style.width = (p * 100) + '%';
+  }
+  addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
+</script>
+<!-- Cloudflare Web Analytics (cookie-free) -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "19a020af926b45bdb404d85cb39d16be"}'></script>
+</body>
+</html>

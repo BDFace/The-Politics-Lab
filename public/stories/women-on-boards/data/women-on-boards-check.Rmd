@@ -1,0 +1,170 @@
+---
+title: "Women got the board seats. They still don't get the top job: number check in R"
+output:
+  html_document:
+    toc: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+## What this notebook does
+
+This notebook checks the main numbers in the women on boards story. The only thing it takes from Claude is the list of numbers being checked. It:
+
+1. downloads the raw data directly from EIGE (the European Institute for Gender Equality) onto your Mac,
+2. works out each number from scratch, and
+3. prints each number next to the number in the story, with a **match** column.
+
+If the story's numbers had been made up rather than calculated, they wouldn't match.
+
+**Before you start:** if you haven't already, run `install.packages("tidyverse")` once in the RStudio console. Then press **Knit**.
+
+**Where the downloads go:** `~/Desktop/Claude-checker/women-on-boards/raw-data`. It's only downloaded the first time.
+
+```{r packages}
+library(tidyverse)
+```
+
+## Step 1: download the raw file
+
+This is the same EIGE export as the one in the story's data folder: largest listed companies, all sectors, headcounts and percentages, every position.
+
+```{r download}
+raw_dir <- path.expand("~/Desktop/Claude-checker/women-on-boards/raw-data")
+dir.create(raw_dir, recursive = TRUE, showWarnings = FALSE)
+options(timeout = 600)
+
+url  <- paste0("https://eige.europa.eu/gender-statistics/dgs/export/indicator/",
+               "wmidm_bus_bus__wmid_comp_compbm/bar/csv/",
+               "EGROUP:COMP/sex:M,T,W/UNIT:NR,PC/",
+               "POSITION:PRES_BRD,MEMB_BRD,CEO,EXEC,NON_EXEC,NON_EXEC_EXER,EMP_REP/NACE:TOT")
+dest <- file.path(raw_dir, "eige_wmid_comp.csv")
+if (!file.exists(dest)) download.file(url, dest, mode = "wb")
+
+raw <- read_csv(dest, show_col_types = FALSE)
+nrow(raw)   # 48,552 rows on 22 October 2026; more if EIGE has added a half-year since
+```
+
+## Step 2: compute the numbers
+
+```{r compute}
+# Headcounts only (not EIGE's percentages): one row per country, period, position,
+# with columns women and total
+nr <- raw |>
+  filter(`_UNIT` == "NR", `_sex` %in% c("W", "T")) |>
+  select(geo = `_geo`, time, pos = `_POSITION`, sex = `_sex`, value) |>
+  pivot_wider(names_from = sex, values_from = value) |>
+  rename(women = W, total = T)
+
+# The 30 countries compared: EU27, Norway, Iceland and the UK
+# (EU totals and the candidate countries are left out)
+not_compared <- c("EU27_2020", "EEA", "IPA", "TR", "RS", "ME", "MK", "BA")
+quota        <- c("NO", "IS", "FR", "IT", "BE", "DE", "AT", "PT")
+countries    <- setdiff(unique(nr$geo), not_compared)
+
+nr <- nr |>
+  mutate(group = case_when(geo == "UK"       ~ "UK",
+                           geo %in% quota    ~ "Quota",
+                           geo %in% countries ~ "No quota"))
+
+# Excel-style rounding (R's round() rounds 0.5 to the even number)
+round_up <- function(x, d = 0) floor(x * 10^d + 0.5 + 1e-9) / 10^d
+
+# Women's share for a group, pooled by headcount: all women / all people
+group_share <- function(g, p, t) {
+  nr |> filter(group == g, pos == p, time == t) |>
+    summarise(s = 100 * sum(women) / sum(total)) |> pull(s)
+}
+# Women's share for one country (or the EU27 total)
+geo_share <- function(g, p, t) {
+  nr |> filter(geo == g, pos == p, time == t) |> mutate(s = 100 * women / total) |> pull(s)
+}
+geo_count <- function(g, p, t, which) {
+  nr |> filter(geo == g, pos == p, time == t) |> pull({{ which }})
+}
+group_count <- function(g, p, t, which) {
+  nr |> filter(group == g, pos == p, time == t) |> summarise(n = sum({{ which }})) |> pull(n)
+}
+
+end <- "2024-B2"; start <- "2012-B2"
+
+q_exec  <- group_share("Quota", "EXEC", end)
+nq_exec <- group_share("No quota", "EXEC", end)
+
+# Every country's executive share in both years, for the UK ranking claims
+by_country <- nr |>
+  filter(geo %in% countries, pos %in% c("EXEC", "NON_EXEC"), time %in% c(start, end)) |>
+  mutate(s = 100 * women / total) |>
+  select(geo, time, pos, s) |>
+  pivot_wider(names_from = c(pos, time), values_from = s) |>
+  mutate(rise = `EXEC_2024-B2` - `EXEC_2012-B2`)
+
+uk_ceo_t <- geo_count("UK", "CEO", end, total)
+eu_ceo_t <- geo_count("EU27_2020", "CEO", end, total)
+eu_ceo_w <- geo_count("EU27_2020", "CEO", end, women)
+eu_ned   <- geo_share("EU27_2020", "NON_EXEC", end)
+eu_match <- round_up(eu_ceo_t * eu_ned / 100)
+
+# EIGE's own percentages against our recomputed ones
+pct_gap <- raw |>
+  filter(`_UNIT` == "PC", `_sex` == "W", `_geo` %in% countries,
+         `_POSITION` %in% c("NON_EXEC", "EXEC", "CEO"), time >= start, time <= end) |>
+  select(geo = `_geo`, time, pos = `_POSITION`, eige = value) |>
+  inner_join(nr, by = c("geo", "time", "pos")) |>
+  filter(total > 0) |>
+  summarise(m = max(abs(100 * women / total - eige))) |> pull(m)
+```
+
+## Step 3: compare with the story
+
+```{r compare}
+story <- tribble(
+  ~claim,                                            ~in_story, ~in_r,                                               ~dp,
+  "Quota countries, % of executive jobs",            25.3,  q_exec,                                                  1,
+  "Rest of Europe, % of executive jobs",             23.1,  nq_exec,                                                 1,
+  "Gap, points",                                     2,     q_exec - nq_exec,                                        0,
+  "Quota countries, % of non-executive seats",       43.8,  group_share("Quota", "NON_EXEC", end),                   1,
+  "Rest of Europe, % of non-executive seats",        32.6,  group_share("No quota", "NON_EXEC", end),                1,
+  "Quota countries, women CEOs",                     19,    group_count("Quota", "CEO", end, women),                     0,
+  "Quota countries, companies",                      211,   group_count("Quota", "CEO", end, total),                     0,
+  "Rest of Europe, women CEOs",                      38,    group_count("No quota", "CEO", end, women),                  0,
+  "Rest of Europe, companies",                       398,   group_count("No quota", "CEO", end, total),                  0,
+  "Quota exec share, rise since 2012, points",       17,    q_exec - group_share("Quota", "EXEC", start),            0,
+  "Rest of Europe exec share, rise, points",         11,    nq_exec - group_share("No quota", "EXEC", start),        0,
+  "Quota, non-exec minus exec gap, 2012",            11,    group_share("Quota", "NON_EXEC", start) - group_share("Quota", "EXEC", start), 0,
+  "Quota, non-exec minus exec gap, 2024",            18,    group_share("Quota", "NON_EXEC", end) - q_exec,          0,
+  "Italy, % of non-executive seats",                 50.0,  geo_share("IT", "NON_EXEC", end),                        1,
+  "Italy, % of executive jobs",                      17.0,  geo_share("IT", "EXEC", end),                            1,
+  "Italy, % of executive jobs, 2012",                4.3,   geo_share("IT", "EXEC", start),                          1,
+  "Italy, women CEOs",                               1,     geo_count("IT", "CEO", end, women),                          0,
+  "Italy, companies",                                35,    geo_count("IT", "CEO", end, total),                          0,
+  "UK, % of executive jobs",                         34.5,  geo_share("UK", "EXEC", end),                            1,
+  "UK, % of executive jobs, 2012",                   11.0,  geo_share("UK", "EXEC", start),                          1,
+  "UK has the highest exec share (1 = yes)",         1,     as.numeric(by_country$geo[which.max(by_country$`EXEC_2024-B2`)] == "UK"), 0,
+  "UK has the largest rise (1 = yes)",               1,     as.numeric(by_country$geo[which.max(by_country$rise)] == "UK"), 0,
+  "Countries compared",                              30,    length(countries),                                       0,
+  "UK, % of non-executive seats",                    49.7,  geo_share("UK", "NON_EXEC", end),                        1,
+  "France, % of non-executive seats",                49.9,  geo_share("FR", "NON_EXEC", end),                        1,
+  "UK, women CEOs",                                  7,     geo_count("UK", "CEO", end, women),                          0,
+  "UK, companies",                                   48,    uk_ceo_t,                                                0,
+  "UK, CEOs if they matched non-exec share",         24,    uk_ceo_t * geo_share("UK", "NON_EXEC", end) / 100,       0,
+  "EU, women CEOs",                                  49,    eu_ceo_w,                                                0,
+  "EU, companies",                                   563,   eu_ceo_t,                                                0,
+  "EU, % of non-executive seats",                    37.2,  eu_ned,                                                  1,
+  "EU, CEOs if they matched non-exec share",         209,   eu_match,                                                0,
+  "EU, missing women CEOs",                          160,   eu_match - eu_ceo_w,                                     0,
+  "Countries where non-exec share > exec share",     25,    sum(by_country$`NON_EXEC_2024-B2` > by_country$`EXEC_2024-B2`), 0
+)
+
+story |>
+  mutate(in_r = round_up(in_r, dp),
+         match = if_else(abs(in_story - in_r) < 0.0005, "match", "CHECK")) |>
+  select(-dp) |>
+  knitr::kable()
+```
+
+**One more check:** the largest gap between EIGE's own percentages and the shares worked out from headcounts is `r round(pct_gap, 3)` points. The story says "within 0.05 points".
+
+**Not checked here:** the UK review figures (Davies, Hampton-Alexander, FTSE Women Leaders) and the law dates. They come from the reports, not from EIGE, and are listed with page numbers on the *Report figures* sheet of the check workbook.
