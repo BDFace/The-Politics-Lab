@@ -3,6 +3,9 @@
   // Cloudflare serves everything in ./public as static assets.
   "name": "the-politics-lab",
   "compatibility_date": "2026-10-01",
+  // A workers.dev address for the live site, and a preview link for every branch.
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     "directory": "./public",
     "not_found_handling": "404-page",
