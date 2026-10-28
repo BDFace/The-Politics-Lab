@@ -3,8 +3,7 @@
 Independent, data-led analysis of British politics and policy, and what the evidence means for decisions. Plain HTML, CSS and JavaScript with no build step. Everything the site serves is in `public/`.
 
 ```
-public/index.html                       Front page: the lead story and its number to take away
-public/about/index.html                 About: independence, funding, how we check, corrections
+public/index.html                       Front page: lead story, the number to take away, the stories row
 public/corrections/index.html           Every correction, dated
 public/data/index.html                  The data hub: one card per story
 public/stories/<slug>/index.html        The story
@@ -25,7 +24,7 @@ Every page carries the cookie-free Cloudflare Web Analytics beacon just before `
 ## Adding a story
 
 1. Add the story under `public/stories/<slug>/` (story page, `data.html`, `img/`, `data/`).
-2. Add a card to the data hub (`public/data/index.html`).
-3. Update the front page lead (and move the previous lead into a "More stories" row).
+2. Add a row to the data hub (`public/data/index.html`), newest first.
+3. Update the front page: the new story becomes the lead and the number to take away, and its card replaces the first "Coming soon" tile in The stories row.
 4. Log every new image in `CREDITS.md`.
 5. Add the analytics beacon line before `</body>` on every new page.

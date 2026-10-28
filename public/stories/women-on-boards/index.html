@@ -48,7 +48,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .mark { display: flex; align-items: stretch; gap: 8px; text-decoration: none; }
 .mark img { display: block; height: 22px; width: auto; }
 .mark span { display: flex; flex-direction: column; font-family: var(--serif); font-weight: 700; font-size: 15px; line-height: 1.05; letter-spacing: -.01em; }
-.bar .now { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .bar .track { height: 2px; background: transparent; }
 .bar .fill { height: 2px; width: 0; background: var(--plum); }
 .note { font-family: var(--sans); font-size: 13px; color: var(--sub); background: var(--tint); padding-block: 6px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -150,7 +149,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 <div class="bar" role="navigation" aria-label="Story progress">
   <div class="row">
     <a class="mark" href="/"><img src="/images/brand/coffeehouse-lab-logo-plain-light.svg" alt="The Coffeehouse Lab front page"></a>
-    <span class="now" aria-live="off"></span>
   </div>
   <div class="track" aria-hidden="true"><div class="fill"></div></div>
 </div>
@@ -301,12 +299,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   </section>
 </section>
 
-<section class="prose" id="method">
+<section class="prose" id="sources">
   <div class="back">
-    <div>
-      <h3>Method</h3>
-      <p>Data: EIGE Gender Statistics Database, “Largest listed companies” (wmid_comp), all sectors, every half-year from 2003 to 2026, downloaded 22 October 2026. Shares are recomputed from headcounts and match EIGE’s own percentages to within 0.05 points. The comparison uses the second half of 2024, the last period with UK data. “Board seats” are EIGE’s non-executive board members; in countries with two boards, that means the supervisory board. “Top management” is what EIGE calls senior executives: the members of a company’s two highest decision-making bodies who run it, so countries with one board and countries with two compare fairly. Quota countries are Norway, Iceland, France, Italy, Belgium, Germany, Austria and Portugal, which had binding laws with sanctions before 2020; groups are pooled by headcount. Adding the Netherlands and Greece to the quota group, or comparing only with western and northern Europe, leaves the top management result in place.</p>
-    </div>
     <div>
       <h3>Sources</h3>
       <ul>
@@ -328,7 +322,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
     </div>
     <div class="cards" id="data">
       <a class="card" href="data.html"><i aria-hidden="true"></i><span><small>The data</small><strong>Download the board figures and see how we checked them</strong></span></a>
-      <a class="card" href="#method"><i aria-hidden="true"></i><span><small>Method</small><strong>How the quota and no-quota groups were built</strong></span></a>
     </div>
   </div>
 </section>
@@ -336,22 +329,18 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 </article>
 </main>
 
-<footer class="foot"><span>The Coffeehouse Lab · Politics, policy and the data</span><span>Independent and self-funded. Photos and sources credited above.</span><nav aria-label="Footer" class="footnav"><a href="/">Front page</a> · <a href="/about/">About</a> · <a href="/data/">Data</a> · <a href="/corrections/">Corrections</a></nav></footer>
+<footer class="foot"><span>The Coffeehouse Lab · Politics, policy and the data</span><span>Independent and self-funded. Photos and sources credited above.</span><nav aria-label="Footer" class="footnav"><a href="/">Front page</a> · <a href="/#stories">The stories</a> · <a href="/data/">The data</a> · <a href="/corrections/">Corrections</a></nav></footer>
 
 <script>
-/* Reading bar: progress line and the name of the chapter in view (as in The Replay Lab's scrubber) */
+/* Reading bar: a plum progress line */
 (function () {
-  var fill = document.querySelector('.bar .fill'), now = document.querySelector('.bar .now');
-  var chapters = [].slice.call(document.querySelectorAll('[data-chapter]'));
+  var fill = document.querySelector('.bar .fill');
   var ticking = false;
   function update() {
     ticking = false;
     var doc = document.documentElement, max = doc.scrollHeight - innerHeight;
     var p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
     if (fill) fill.style.width = (p * 100) + '%';
-    var cur = null, line = innerHeight * 0.4;
-    chapters.forEach(function (c) { if (c.getBoundingClientRect().top <= line) cur = c; });
-    if (now) now.textContent = cur ? cur.dataset.chapter : '';
   }
   addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   addEventListener('resize', update);

@@ -43,7 +43,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .mark { display: flex; align-items: stretch; gap: 8px; text-decoration: none; }
 .mark img { display: block; height: 22px; width: auto; }
 .mark span { display: flex; flex-direction: column; font-family: var(--serif); font-weight: 700; font-size: 15px; line-height: 1.05; letter-spacing: -.01em; }
-.bar .now { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .bar .track { height: 2px; background: transparent; }
 .bar .fill { height: 2px; width: 0; background: var(--plum); }
 .note { font-family: var(--sans); font-size: 13px; color: var(--sub); background: var(--tint); padding-block: 6px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -156,7 +155,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 <div class="bar" role="navigation" aria-label="Site">
   <div class="row">
     <a class="mark" href="/"><img src="/images/brand/coffeehouse-lab-logo-plain-light.svg" alt="The Coffeehouse Lab front page"></a>
-    <span class="now">The data</span>
   </div>
 </div>
 <main id="top">
@@ -185,18 +183,16 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   </table>
 
   <h2>How we checked it</h2>
-  <p><b>Shares from headcounts.</b> EIGE publishes both headcounts and percentages. We used the headcounts and divided women by the total ourselves. Our shares match EIGE’s own percentages to within 0.05 points.</p>
-  <p><b>Groups pooled by people, not averaged.</b> “Quota countries” are Norway, Iceland, France, Italy, Belgium, Germany, Austria and Portugal, which had binding laws with sanctions before 2020. “The rest of Europe” is the other 21 EU countries. For each group we added up all the women and all the people, rather than averaging the countries’ percentages, so a country with more companies counts for more.</p>
-  <p><b>The comparison period.</b> The second half of 2024, the last period with figures for the UK.</p>
-  <p><b>Other ways of drawing the groups.</b> Counting the Netherlands and Greece as quota countries gives top management shares of 24.8% against 23.3%. Comparing only with western and northern Europe gives 25.3% against 24.1%. The result, a gap of about one to two points, holds either way.</p>
-  <p><b>Figures from UK reports.</b> The FTSE 100 and FTSE 350 figures come from the Davies Review (February 2011) and the FTSE Women Leaders Review (February 2026), not from EIGE. The check workbook lists each one with its page number.</p>
+  <p><b>Shares from headcounts.</b> We divided women by the total ourselves from EIGE’s headcounts. Our shares match EIGE’s own percentages to within 0.05 points.</p>
+  <p><b>Groups.</b> “Quota countries” are Norway, Iceland, France, Italy, Belgium, Germany, Austria and Portugal, which had binding laws with sanctions before 2020. “The rest of Europe” is the other 21 EU countries. Each group adds up all its women and all its people, so a country with more companies counts for more. Drawing the groups other ways (adding the Netherlands and Greece, or comparing only with western and northern Europe) leaves a gap of one to two points.</p>
+  <p><b>UK reports.</b> The FTSE figures come from the Davies Review (February 2011) and the FTSE Women Leaders Review (February 2026). The check workbook gives each one with its page number.</p>
 
   <h2>Licence</h2>
   <p>EIGE allows reuse of its data with credit to the source. Our files are free to reuse: please credit “The Coffeehouse Lab, from EIGE data”.</p>
   <p><a href="index.html">Back to the story</a></p>
 </section>
 </main>
-<footer class="foot"><span>The Coffeehouse Lab · Politics, policy and the data</span><span>Independent and self-funded.</span><nav aria-label="Footer" class="footnav"><a href="/">Front page</a> · <a href="/about/">About</a> · <a href="/data/">Data</a> · <a href="/corrections/">Corrections</a></nav></footer>
+<footer class="foot"><span>The Coffeehouse Lab · Politics, policy and the data</span><span>Independent and self-funded.</span><nav aria-label="Footer" class="footnav"><a href="/">Front page</a> · <a href="/#stories">The stories</a> · <a href="/data/">The data</a> · <a href="/corrections/">Corrections</a></nav></footer>
 <!-- Cloudflare Web Analytics (cookie-free) -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "19a020af926b45bdb404d85cb39d16be"}'></script>
 </body>
