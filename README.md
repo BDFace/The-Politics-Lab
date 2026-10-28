@@ -20,7 +20,7 @@ wrangler.jsonc                          Cloudflare config: serve public/ as stat
 
 Deployed by Cloudflare Workers Builds, connected to this repository. Every push to `main` goes live, so changes go through a branch and pull request, and merge only on BDF's go-ahead. Other branches get their own preview URL, as long as Preview URLs are switched on in Cloudflare (Workers & Pages > the-politics-lab > Settings > Domains & Routes). Builds of `main` fail until the site is merged there, because `main` holds only a README.
 
-Every page carries the cookie-free Cloudflare Web Analytics beacon just before `</body>`. Before the first deploy, replace `CF_BEACON_TOKEN` with the site's token from Cloudflare > Web Analytics; `grep -r CF_BEACON_TOKEN public` must print nothing.
+Every page carries the cookie-free Cloudflare Web Analytics beacon just before `</body>`. The token is the one Cloudflare > Web Analytics gives for the site; copy the beacon line from any existing page.
 
 ## Adding a story
 
