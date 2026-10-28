@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The data behind “Women got the board seats” · The Coffeehouse Lab</title>
+<meta name="description" content="Download the board and top management figures behind the women on boards story, and see how every number was checked.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* The Coffeehouse Lab: story page. Same scroll mechanism as The Replay Lab stories:
+   each photo scene pins a full-screen photo (position: sticky, 100svh) and the text beats scroll up over it,
+   then the photo scrolls away with the scene. Prose and charts sit in a 660px reading column between scenes.
+   Signature: the thin plum margin bar (beside the wordmark, the text cards and the key number). Single light look. */
+:root {
+  --paper: #FFFFFF; --ink: #1F1F1F; --body: #2B2A2C; --sub: #6B6B6B; --grid: #E6E6E6; --ctx: #BDBDBD;
+  --plum: #6B2D5C; --tint: #F5F3F5; --night: #0B0B0B; --white: #FFFFFF;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --col: 660px; --bar-h: 54px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 19px; line-height: 1.65; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--plum); outline-offset: 2px; }
+.skip { position: absolute; left: 16px; top: -60px; z-index: 50; background: var(--ink); color: var(--white); padding: 8px 12px; font-family: var(--sans); font-weight: 700; }
+.skip:focus { top: 16px; }
+.label { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--plum); }
+
+/* Reading bar: wordmark, the chapter you are in, and a plum progress line */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 31; background: var(--paper); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); border-bottom: 1px solid var(--grid); font-family: var(--sans); }
+.bar .row { display: flex; justify-content: space-between; align-items: center; gap: var(--s4); padding-block: 9px 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mark { display: flex; align-items: stretch; gap: 8px; text-decoration: none; }
+.mark img { display: block; height: 22px; width: auto; }
+.mark span { display: flex; flex-direction: column; font-family: var(--serif); font-weight: 700; font-size: 15px; line-height: 1.05; letter-spacing: -.01em; }
+.bar .now { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.bar .track { height: 2px; background: transparent; }
+.bar .fill { height: 2px; width: 0; background: var(--plum); }
+.note { font-family: var(--sans); font-size: 13px; color: var(--sub); background: var(--tint); padding-block: 6px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* ---------------- Photo scenes ---------------- */
+.photo-scene { position: relative; background: var(--night); color: var(--white); }
+.photo-scene .bg { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.photo-scene .bg img { width: 100%; height: 100%; object-fit: cover; }
+.photo-scene .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.62) 100%); }
+.photo-scene .bg + .beat { margin-top: -100vh; margin-top: -100svh; }
+.photo-scene .beat { position: relative; z-index: 1; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; padding-top: calc(var(--bar-h) + var(--s7)); padding-bottom: clamp(48px, 10vh, 96px); padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+.photo-scene .beat.short { min-height: 70vh; min-height: 70svh; }
+.photo-scene .credit { position: absolute; right: 16px; bottom: 12px; z-index: 2; margin: 0; font-family: var(--sans); font-size: 11px; line-height: 1.4; color: rgba(255,255,255,.85); max-width: calc(100% - 32px); text-align: right; }
+.photo-scene .card-text { display: flex; gap: 0; background: var(--paper); color: var(--ink); max-width: 58ch; font-size: 19px; line-height: 1.6; }
+.photo-scene .card-text::before { content: ""; flex: 0 0 6px; background: var(--plum); }
+.photo-scene .card-text > div { padding: var(--s5); min-width: 0; }
+.photo-scene .card-text p { margin: 0; }
+.photo-scene .card-text p + p { margin-top: 1em; }
+.photo-scene .big { font-family: var(--serif); font-size: clamp(40px, 6.4vw, 92px); font-weight: 700; line-height: 1; letter-spacing: -.02em; max-width: 14ch; text-wrap: balance; margin: 16px 0 0; text-shadow: 0 2px 24px rgba(0,0,0,.45); }
+.photo-scene .label { color: var(--white); }
+.photo-scene .label.tag { display: inline-block; box-shadow: inset 0 -2px 0 var(--white); padding-bottom: 3px; }
+
+.story-head .kick { display: flex; gap: var(--s3); align-items: baseline; margin-bottom: var(--s4); flex-wrap: wrap; color: rgba(255,255,255,.88); }
+.story-head .kick .tag { color: var(--white); background: var(--plum); padding: 3px 8px; box-shadow: none; }
+.story-head h1 { margin: 0; font-family: var(--serif); font-size: clamp(40px, 6.2vw, 96px); line-height: .98; font-weight: 800; letter-spacing: -.025em; text-wrap: balance; max-width: 16ch; text-shadow: 0 2px 30px rgba(0,0,0,.45); }
+.story-head .standfirst { font-size: clamp(19px, 2vw, 24px); line-height: 1.45; max-width: 44ch; margin: var(--s5) 0 0; text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+.story-head .cue { margin-top: var(--s6); display: inline-flex; align-items: center; gap: var(--s2); color: rgba(255,255,255,.88); }
+.story-head .cue::after { content: ""; width: 1px; height: 28px; background: currentColor; animation: cue 2.4s var(--ease) infinite; transform-origin: top; }
+@keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+/* ---------------- Reading column ---------------- */
+.prose { padding-block: var(--s8); padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); color: var(--body); }
+.prose > * { max-width: var(--col); margin-left: auto; margin-right: auto; }
+.prose p { margin-top: 0; margin-bottom: 1.1em; }
+.prose > .wide { max-width: 760px; }
+.chapter-head { padding-top: var(--s9); padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+.chapter-head > * { max-width: var(--col); margin-left: auto; margin-right: auto; }
+.chapter-head .label { display: block; margin-bottom: var(--s3); border-top: 1px solid var(--ink); padding-top: var(--s3); }
+.chapter-head h2 { margin: 0 auto; font-family: var(--serif); font-size: clamp(34px, 4.6vw, 56px); line-height: 1.04; font-weight: 700; letter-spacing: -.018em; text-wrap: balance; }
+.chapter-head + .prose { padding-top: var(--s6); }
+
+/* Figures */
+.figure { margin: var(--s7) auto; }
+.figure img { width: 100%; height: auto; }
+.figure figcaption { font-family: var(--sans); font-size: 12px; color: var(--sub); margin-top: var(--s3); line-height: 1.45; }
+
+/* The number to take away */
+.take { display: flex; gap: var(--s4); margin: var(--s6) auto var(--s7); font-family: var(--sans); color: var(--ink); }
+.take i { flex: 0 0 6px; background: var(--plum); }
+.take div { display: grid; gap: 6px; }
+.take .lbl { margin: 0; font-size: 14px; font-weight: 600; }
+.take .num { margin: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(56px, 9vw, 84px); line-height: 1; color: var(--plum); font-variant-numeric: tabular-nums lining-nums; letter-spacing: -.02em; }
+.take .what { margin: 0; font-size: 17px; line-height: 1.45; }
+.take .src { margin: 0; font-size: 13px; color: var(--sub); }
+.terms { margin: var(--s6) auto; padding: 18px 20px; border-top: 3px solid var(--plum); background: #F6F1F4; font-family: var(--sans); color: var(--ink); }
+.terms .lbl { margin: 0 0 10px; font-size: 14px; font-weight: 600; }
+.terms dl { margin: 0; display: grid; gap: 10px; }
+.terms dt { font-weight: 700; font-size: 17px; }
+.terms dd { margin: 2px 0 0; font-size: 16px; line-height: 1.45; }
+
+/* What this means */
+.means { display: flex; gap: 18px; margin-top: var(--s7) !important; }
+.means > i { flex: 0 0 6px; background: var(--plum); }
+.means > div { min-width: 0; }
+.means h2 { margin: 6px 0 var(--s4); font-size: clamp(28px, 3.4vw, 36px); line-height: 1.1; color: var(--ink); }
+.means ul { margin: 0; padding-left: 1.1em; display: grid; gap: 14px; }
+.means li { font-size: 18px; line-height: 1.55; }
+.means li b { font-family: var(--sans); font-weight: 600; color: var(--ink); }
+
+/* Back matter */
+.back { border-top: 1px solid var(--grid); padding-top: var(--s5); display: grid; gap: var(--s5); font-family: var(--sans); }
+.back h3 { margin: 0 0 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.back p, .back li { margin: 0; font-size: 15px; line-height: 1.55; }
+.back ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--s5); }
+.card { display: flex; gap: 12px; text-decoration: none; }
+.card i { flex: 0 0 3px; background: var(--ctx); }
+.card span { display: grid; gap: 4px; }
+.card small { font-size: 13px; color: var(--sub); }
+.card strong { font-family: var(--serif); font-weight: 600; font-size: 20px; line-height: 1.25; color: var(--ink); }
+.card:hover strong { color: var(--plum); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; border-top: 1px solid var(--grid); font-family: var(--sans); font-size: 13px; color: var(--sub); padding-block: 16px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+@media (max-width: 760px) {
+  body { font-size: 18px; }
+  .photo-scene .card-text { font-size: 18px; }
+  .photo-scene .card-text > div { padding: var(--s4); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0s !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+.data-page { padding-top: var(--s8); }
+.data-page h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); line-height: 1.04; font-weight: 700; letter-spacing: -.018em; margin: var(--s3) auto var(--s5); }
+.data-page h2 { font-family: var(--serif); font-size: 26px; line-height: 1.15; margin: var(--s7) auto var(--s3); color: var(--ink); }
+.files { list-style: none; padding: 0; display: grid; gap: 12px; }
+.files li { display: flex; gap: 14px; font-family: var(--sans); }
+.files li i { flex: 0 0 3px; background: var(--grid); }
+.files a { font-weight: 600; color: var(--ink); }
+.files span { display: block; font-size: 15px; line-height: 1.45; color: var(--sub); }
+.data-page table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 15px; }
+.data-page th, .data-page td { text-align: left; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--grid); vertical-align: top; }
+.data-page th { font-weight: 600; color: var(--ink); }
+.footnav a { text-decoration: none; } .footnav a:hover { color: var(--plum); }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#top">Skip to the content</a>
+<div class="bar" role="navigation" aria-label="Site">
+  <div class="row">
+    <a class="mark" href="/"><img src="/images/brand/coffeehouse-lab-logo-plain-light.svg" alt="The Coffeehouse Lab front page"></a>
+    <span class="now">The data</span>
+  </div>
+</div>
+<main id="top">
+<section class="prose data-page">
+  <p class="label" style="display:block;margin-bottom:0"><a href="index.html">Women got the board seats. They still don’t get the top job</a></p>
+  <h1>The data behind the story, and how we checked it</h1>
+  <p>All the European comparisons in the story come from one public source: the European Institute for Gender Equality’s count of women and men in the largest listed companies of each European country. We worked out every share again from the raw headcounts, and checked each number twice: once in a spreadsheet and once in a separate program written in R.</p>
+
+  <h2>Download</h2>
+  <ul class="files">
+    <li><i aria-hidden="true"></i><div><a href="data/women-on-boards-countries.csv" download>Country figures (CSV, 1 KB)</a><span>Women’s share of board seats and of top management in 30 European countries, end of 2024, with top management in 2012. Used in charts 2 and 3.</span></div></li>
+    <li><i aria-hidden="true"></i><div><a href="data/women-on-boards-groups.csv" download>Group figures over time (CSV, 2 KB)</a><span>Women’s share of board seats, top management and chief executive jobs, every half-year from 2012 to 2024, for the UK, the quota countries and the rest of Europe. Used in chart 1.</span></div></li>
+    <li><i aria-hidden="true"></i><div><a href="data/women-on-boards-check.xlsx" download>Check workbook (Excel, 3 MB)</a><span>The raw download, untouched, with a formula for every number in the story. 43 claims, each compared with what we published.</span></div></li>
+    <li><i aria-hidden="true"></i><div><a href="data/women-on-boards-check.Rmd" download>R check notebook (R Markdown, 10 KB)</a><span>Downloads the data from EIGE itself and works out 34 of the numbers from scratch, so you don’t have to trust our copy.</span></div></li>
+    <li><i aria-hidden="true"></i><div><a href="https://eige.europa.eu/gender-statistics/dgs/indicator/wmidm_bus_bus__wmid_comp_compbm">The original source (EIGE)</a><span>Gender Statistics Database, “Largest listed companies: presidents, board members and employee representatives”. Downloaded 22 October 2026.</span></div></li>
+  </ul>
+
+  <h2>What the words mean</h2>
+  <table>
+    <thead><tr><th scope="col">In the story</th><th scope="col">What EIGE calls it</th><th scope="col">Who it covers</th></tr></thead>
+    <tbody>
+      <tr><td>Board seats</td><td>Non-executive board members</td><td>People who oversee the company but don’t run it day to day. In countries with two boards, the supervisory board.</td></tr>
+      <tr><td>Top management</td><td>Senior executives</td><td>Members of the company’s two highest decision-making bodies who run it day to day.</td></tr>
+      <tr><td>Chief executive</td><td>CEO</td><td>The one person in charge of running the company. One per company, so EIGE’s count of chief executives is also its count of companies.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>How we checked it</h2>
+  <p><b>Shares from headcounts.</b> EIGE publishes both headcounts and percentages. We used the headcounts and divided women by the total ourselves. Our shares match EIGE’s own percentages to within 0.05 points.</p>
+  <p><b>Groups pooled by people, not averaged.</b> “Quota countries” are Norway, Iceland, France, Italy, Belgium, Germany, Austria and Portugal, which had binding laws with sanctions before 2020. “The rest of Europe” is the other 21 EU countries. For each group we added up all the women and all the people, rather than averaging the countries’ percentages, so a country with more companies counts for more.</p>
+  <p><b>The comparison period.</b> The second half of 2024, the last period with figures for the UK.</p>
+  <p><b>Other ways of drawing the groups.</b> Counting the Netherlands and Greece as quota countries gives top management shares of 24.8% against 23.3%. Comparing only with western and northern Europe gives 25.3% against 24.1%. The result, a gap of about one to two points, holds either way.</p>
+  <p><b>Figures from UK reports.</b> The FTSE 100 and FTSE 350 figures come from the Davies Review (February 2011) and the FTSE Women Leaders Review (February 2026), not from EIGE. The check workbook lists each one with its page number.</p>
+
+  <h2>Licence</h2>
+  <p>EIGE allows reuse of its data with credit to the source. Our files are free to reuse: please credit “The Coffeehouse Lab, from EIGE data”.</p>
+  <p><a href="index.html">Back to the story</a></p>
+</section>
+</main>
+<footer class="foot"><span>The Coffeehouse Lab · Politics, policy and the data</span><span>Independent and self-funded.</span><nav aria-label="Footer" class="footnav"><a href="/">Front page</a> · <a href="/about/">About</a> · <a href="/data/">Data</a> · <a href="/corrections/">Corrections</a></nav></footer>
+<!-- Cloudflare Web Analytics (cookie-free) -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "CF_BEACON_TOKEN"}'></script>
+</body>
+</html>

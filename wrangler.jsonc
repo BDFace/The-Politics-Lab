@@ -1,0 +1,11 @@
+{
+  // Plain HTML, CSS and JS with no build step.
+  // Cloudflare serves everything in ./public as static assets.
+  "name": "coffeehouse-lab",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}
