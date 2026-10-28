@@ -1,7 +1,7 @@
 {
   // Plain HTML, CSS and JS with no build step.
   // Cloudflare serves everything in ./public as static assets.
-  "name": "coffeehouse-lab",
+  "name": "the-politics-lab",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./public",
